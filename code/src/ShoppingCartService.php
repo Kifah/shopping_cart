@@ -55,4 +55,15 @@ class ShoppingCartService
         $this->entityManager->flush();
         return $returnShoppingCart->getId();
     }
+
+
+    public function getShoppingCart(int $cartId): ?ShoppingCart
+    {
+        $cartRepository = $this->entityManager->getRepository(
+            ShoppingCart::class
+        );
+        $shoppingCart = $cartRepository->find($cartId);
+        return $shoppingCart;
+
+    }
 }

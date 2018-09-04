@@ -63,7 +63,8 @@ class ShoppingCartController
      */
     public function getCartAction(int $id)
     {
+        $shoppingCart = $this->cartService->getShoppingCart($id);
 
-        return new JsonResponse($id, 200);
+        return new JsonResponse($shoppingCart->getId(), 200);
     }
 }
