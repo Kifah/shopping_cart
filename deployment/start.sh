@@ -13,8 +13,14 @@ do
 done;
 
 
-echo "prepare database schema"
-php bin/console doctrine:schema:update --force
+echo "prepare database schema and fixtures"
+
+bin/console doctrine:schema:drop --force
+bin/console doctrine:schema:update --force
+bin/console doctrine:fixtures:load --no-interaction -v
+
+
+
 
 echo "starting php server"
 php -S 0.0.0.0:80 -t public
