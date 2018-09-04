@@ -5,7 +5,9 @@ This project is just a proof of concept, of implementing a simple shopping cart 
 it uses php 7.2, docker-compose and offers behat end-2-end tests for the API endpoints, which also serves a documentation for the API.
 
 ## Limitations
-It is assumed, there is no users/a single user on the system for simplicity reasons
+* It is assumed, there is no users/a single user on the system for simplicity reasons
+* error handling is very limited
+
 
 
 
