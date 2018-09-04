@@ -39,6 +39,13 @@ class Product
      */
     private $price;
 
+
+    /**
+     * One Shopping Cart has Many Items.
+     * @ORM\OneToMany(targetEntity="App\Entity\ShoppingCartItem", mappedBy="product", fetch="EXTRA_LAZY")
+     */
+    private $shoppingCartItems;
+
     /**
      * @return int
      */
@@ -89,6 +96,26 @@ class Product
         $this->price = $price;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getShoppingCartItems()
+    {
+        return $this->shoppingCartItems;
+    }
+
+    /**
+     * @param mixed $shoppingCartItems
+     */
+    public function setShoppingCartItems($shoppingCartItems): Product
+    {
+        $this->shoppingCartItems = $shoppingCartItems;
+        return $this;
+
+    }
+
+
 
 
 }

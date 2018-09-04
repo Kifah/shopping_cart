@@ -29,17 +29,12 @@ class ShoppingCart
 
 
     /**
+     * @var ArrayCollection
      * One Shopping Cart has Many Items.
-     * @ORM\OneToMany(targetEntity="ShoppingCartItem", mappedBy="shoppingCart")
+     * @ORM\OneToMany(targetEntity="App\Entity\ShoppingCartItem", mappedBy="shoppingCart", fetch="EXTRA_LAZY")
      */
     private $shoppingCartItems;
 
-    // ...
-
-    public function __construct()
-    {
-        $this->shoppingCartItems = new ArrayCollection();
-    }
 
     /**
      * @return int
@@ -67,6 +62,11 @@ class ShoppingCart
     {
         $this->shoppingCartItems = $shoppingCartItems;
         return $this;
+    }
+
+    public function addShoppingCartItem(ShoppingCartItem $cartItem)
+    {
+        $this->shoppingCartItems->add($cartItem);
     }
 
 

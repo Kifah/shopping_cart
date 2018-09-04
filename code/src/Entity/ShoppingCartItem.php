@@ -28,14 +28,14 @@ class ShoppingCartItem
 
     /**
      * Many items have One shopping Cart.
-     * @ORM\ManyToOne(targetEntity="ShoppingCart", inversedBy="shoppingCartItems")
+     * @ORM\ManyToOne(targetEntity="App\Entity\ShoppingCart", inversedBy="shoppingCartItems",fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(name="shopping_cart_id", referencedColumnName="id")
      */
     private $shoppingCart;
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Product")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Product")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
     private $product;
@@ -81,7 +81,7 @@ class ShoppingCartItem
     /**
      * @return mixed
      */
-    public function getProduct()
+    public function getProduct(): Product
     {
         return $this->product;
     }
