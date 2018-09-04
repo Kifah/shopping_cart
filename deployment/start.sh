@@ -13,6 +13,9 @@ do
 done;
 
 
+echo "prepare database schema"
+php bin/console doctrine:schema:update --force
+
 echo "starting php server"
 php -S 0.0.0.0:80 -t public
 
