@@ -52,8 +52,11 @@ class ShoppingCartController
         return new JsonResponse($createdCartId, 201);
     }
 
+
     /**
      * @Route("/shopping_cart/{id}/item", name="add_cart_item", methods={"POST"})
+     *
+     * @param int     $id
      * @param Request $request
      *
      * @return JsonResponse
@@ -61,9 +64,25 @@ class ShoppingCartController
     public function addItemToCartAction(int $id, Request $request)
     {
         $payload = json_decode($request->getContent(), true);
-        $createdCartId = $this->cartService->addItemToCart($id, $payload);
+        $addedItemId = $this->cartService->addItemToCart($id, $payload);
 
-        return new JsonResponse($createdCartId, 201);
+        return new JsonResponse($addedItemId, 201);
+    }
+
+
+
+    /**
+     *
+     * @Route("/shopping_cart/{id}/item/{itemId}", name="delete_cart_item", methods={"DELETE"})
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function deleteItemFromCartAction(int $id, int $itemId)
+    {
+        $deleted = $this->cartService->deleteItemFromCart($itemId);
+
+        return new JsonResponse($deleted, 204);
     }
 
 

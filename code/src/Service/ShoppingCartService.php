@@ -64,6 +64,29 @@ class ShoppingCartService
 
     }
 
+    public function deleteItemFromCart(int $itemId): bool
+    {
+        $deleted = false;
+        $item = $this->entityManager->getRepository(ShoppingCartItem::class)
+            ->find(
+                $itemId
+            );
+        if (!$item) {
+            throw new \Exception(
+                'No cart item found'
+            );
+        } else {
+
+            $this->entityManager->remove($item);
+            $this->entityManager->flush();
+            $deleted = true;
+        }
+
+        return $deleted;
+
+
+    }
+
 
     public function getShoppingCart(int $cartId): ?ShoppingCartDto
     {
