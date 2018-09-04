@@ -89,6 +89,7 @@ class ShoppingCart implements transformInterface
         foreach ($items as $item) {
             $itemDto = new ShoppingCartItemDto();
             $itemDto->setId($item->getId());
+            $itemDto->setCount($item->getCount());
             $productDto = new ProductDto();
             $productDto->setId($item->getProduct()->getId());
             $productDto->setPrice($item->getProduct()->getPrice());

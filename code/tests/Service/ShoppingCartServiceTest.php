@@ -70,4 +70,15 @@ class ShoppingCartServiceTest extends TestCase
         $this->assertEquals(1, $createdShoppingCartId);
 
     }
+
+    /**
+     * @test
+     */
+    public function addShoppingCartItemWorks()
+    {
+        $expected = 1;
+        $itemArray = ['product_id' => 1, 'count' => 2];
+        $addedShoppingItemId = $this->testObject->addItemToCart(1, $itemArray);
+
+    }
 }

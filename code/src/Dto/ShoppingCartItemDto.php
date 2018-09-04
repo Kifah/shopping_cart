@@ -26,6 +26,12 @@ class ShoppingCartItemDto implements \JsonSerializable
      */
     private $product;
 
+
+    /**
+     * @var int
+     */
+    private $count;
+
     /**
      * @return int
      */
@@ -61,12 +67,33 @@ class ShoppingCartItemDto implements \JsonSerializable
 
     }
 
+    /**
+     * @return int
+     */
+    public function getCount(): int
+    {
+        return $this->count;
+    }
+
 
     public function jsonSerialize()
     {
         return [
             'product' => $this->getProduct(),
-            'id'      => $this->getId()
+            'id'      => $this->getId(),
+            'count'   => $this->getCount()
         ];
     }
+
+    /**
+     * @param int $count
+     */
+    public function setCount(int $count): ShoppingCartItemDto
+    {
+        $this->count = $count;
+        return $this;
+
+    }
+
+
 }
