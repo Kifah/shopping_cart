@@ -75,31 +75,8 @@ class ShoppingCartService
          */
         $shoppingCart = $cartRepository->find($cartId);
 
+        return $shoppingCart->transformEntityToDto();
 
-        //create ShoppingCartDto
-        $cartDto = new ShoppingCartDto();
-        $cartDto->setId($shoppingCart->getId());
-
-
-        $items = $shoppingCart->getShoppingCartItems();
-        /**
-         * @var $item ShoppingCartItem
-         */
-        foreach ($items as $item) {
-            $itemDto = new ShoppingCartItemDto();
-            $itemDto->setId($item->getId());
-            $productDto = new ProductDto();
-            $productDto->setId($item->getProduct()->getId());
-            $productDto->setPrice($item->getProduct()->getPrice());
-            $productDto->setName($item->getProduct()->getName());
-            $itemDto->setProduct($productDto);
-            $cartDto->addShoppingCartItem(
-                $itemDto
-            );
-
-        }
-
-        return $cartDto;
 
     }
 }
