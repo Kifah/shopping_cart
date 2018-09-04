@@ -1,0 +1,95 @@
+{
+	"variables": [],
+	"info": {
+		"name": "shopping_cart",
+		"_postman_id": "890ed2bb-c686-2370-60f5-6ed240f1490c",
+		"description": "proof of concept shopping_cart project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create_new_cart",
+			"request": {
+				"url": "http://localhost/api/shopping_cart",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \n   \"shopping_cart_items\":[  \n      {  \n         \"product_id\":1,\n         \"count\":2\n      }\n   ]\n}"
+				},
+				"description": "creating an initial shopping cart with items"
+			},
+			"response": []
+		},
+		{
+			"name": "add_item_to_cart",
+			"request": {
+				"url": "http://localhost/api/shopping_cart/1/item",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "      {  \n         \"product_id\":1,\n         \"count\":2\n      }\n"
+				},
+				"description": "creating an initial shopping cart with items"
+			},
+			"response": []
+		},
+		{
+			"name": "get_shopping_cart",
+			"request": {
+				"url": "http://localhost/api/shopping_cart/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \n   \"shopping_cart_items\":[  \n      {  \n         \"product_id\":1,\n         \"count\":2\n      }\n   ]\n}"
+				},
+				"description": "creating an initial shopping cart with items"
+			},
+			"response": []
+		},
+		{
+			"name": "delete_item_from_cart",
+			"request": {
+				"url": "http://localhost/api/shopping_cart/1/item/3",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \n   \"shopping_cart_items\":[  \n      {  \n         \"product_id\":1,\n         \"count\":2\n      }\n   ]\n}"
+				},
+				"description": "creating an initial shopping cart with items"
+			},
+			"response": []
+		}
+	]
+}
