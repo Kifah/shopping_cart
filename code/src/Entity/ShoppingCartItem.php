@@ -12,6 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 /**
+ *
+ * @ORM\Table(name="shopping_cart_item",
+ *    uniqueConstraints={
+ *        @ORM\UniqueConstraint(name="product_count",
+ *            columns={"product_id", "count"})
+ *    }
+ * )
  * @ORM\Entity()
  */
 class ShoppingCartItem
