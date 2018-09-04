@@ -26,5 +26,10 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    App\Entity\ShoppingCart:
+        # call the static method
+        factory: ['App\Factory\ShoppingCartFactory', createShoppingCartEntity]
+
+    App\Entity\ShoppingCartItem:
+        # call the static method
+        factory: ['App\Factory\ShoppingCartItemFactory', createShoppingCartItemEntity]

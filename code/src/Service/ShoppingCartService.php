@@ -23,22 +23,35 @@ class ShoppingCartService
      * @var EntityManagerInterface
      */
     private $entityManager;
+    /**
+     * @var ShoppingCart
+     */
+    private $shoppingCart;
+    /**
+     * @var ShoppingCartItem
+     */
+    private $shoppingCartItem;
 
 
     /**
      * ShoppingCartService constructor.
      *
      * @param EntityManagerInterface $entityManager
+     * @param ShoppingCart           $shoppingCart
+     * @param ShoppingCartItem       $shoppingCartItem
      */
-    public function __construct(EntityManagerInterface $entityManager)
-    {
+    public function __construct(EntityManagerInterface $entityManager,
+        ShoppingCart $shoppingCart, ShoppingCartItem $shoppingCartItem
+    ) {
         $this->entityManager = $entityManager;
+        $this->shoppingCart = $shoppingCart;
+        $this->shoppingCartItem = $shoppingCartItem;
     }
 
 
     public function initShoppingCart(): int
     {
-        $cart = new ShoppingCart();
+        $cart = $this->shoppingCart;
         $this->entityManager->persist($cart);
         $this->entityManager->flush();
         return $cart->getId();
@@ -52,7 +65,7 @@ class ShoppingCartService
             $cartId
         );
 
-        $cartItem = new ShoppingCartItem();
+        $cartItem = $this->shoppingCartItem;
         $cartItem->setShoppingCart($cart);
         $cartItem->setCount($itemArray['count']);
         $product = $this->entityManager->getRepository(Product::class)
