@@ -61,19 +61,19 @@ class ShoppingCartService
 
     public function addItemToCart(int $cartId, array $itemArray)
     {
-        $cart = $this->entityManager->getRepository(ShoppingCart::class)->find(
+        $repo = $this->entityManager->getRepository(ShoppingCart::class);
+        $cart = $repo->find(
             $cartId
         );
 
-        $cartItem = $this->shoppingCartItem;
-        $cartItem->setShoppingCart($cart);
-        $cartItem->setCount($itemArray['count']);
+        $this->shoppingCartItem->setShoppingCart($cart);
+        $this->shoppingCartItem->setCount($itemArray['count']);
         $product = $this->entityManager->getRepository(Product::class)
             ->find($itemArray['product_id']);
-        $cartItem->setProduct($product);
-        $this->entityManager->persist($cartItem);
+        $this->shoppingCartItem->setProduct($product);
+        $this->entityManager->persist($this->shoppingCartItem);
         $this->entityManager->flush();
-        return $cartItem->getId();
+        return $this->shoppingCartItem->getId();
 
     }
 

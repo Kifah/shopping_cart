@@ -9,8 +9,10 @@
 namespace App\Service;
 
 
+use App\Entity\Product;
 use App\Entity\ShoppingCart;
 use App\Entity\ShoppingCartItem;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
@@ -71,14 +73,5 @@ class ShoppingCartServiceTest extends TestCase
 
     }
 
-    /**
-     * @test
-     */
-    public function addShoppingCartItemWorks()
-    {
-        $expected = 1;
-        $itemArray = ['product_id' => 1, 'count' => 2];
-        $addedShoppingItemId = $this->testObject->addItemToCart(1, $itemArray);
 
-    }
 }
