@@ -1,5 +1,7 @@
 # Simple Shopping Cart API
 
+[![Build Status](https://travis-ci.com/Kifah/shopping_cart.svg?branch=master)](https://travis-ci.com/Kifah/shopping_cart)
+
 This project is just a proof of concept, of implementing a simple shopping cart API.
 
 it uses php 7.2, docker-compose and offers behat end-2-end tests for the API endpoints, which also serves a documentation for the API.
