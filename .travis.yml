@@ -1,0 +1,15 @@
+services: docker
+sudo: required
+env:
+  DOCKER_COMPOSE_VERSION: '3.3'
+
+before_install:
+- sudo service mysql stop
+- sudo /etc/init.d/postgresql stop
+
+script:
+- docker-compose build
+- docker-compose up -d
+- docker exec api-service composer update
+- docker exec api-service  ./bin/phpunit
+- docker-compose kill
